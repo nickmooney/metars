@@ -7,8 +7,8 @@ fn main() {
         println!("Usage: metars <icao>");
         return;
     }
-    let sites = &args[1..];
-    let body = get_site_metars(&sites[0]).unwrap();
+    let sites = Vec::from(&args[1..]);
+    let body = get_site_metars(sites).unwrap();
     let metars = extract_metars(&body).unwrap();
     for metar in metars {
         println!("{}", metar);
